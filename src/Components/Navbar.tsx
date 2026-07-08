@@ -6,10 +6,12 @@ function Navbar()
     return (
         <div>
             <div className="flex justify-between items-center bg-[#111827]/80 backdrop-blur-xl p-4">
-                <div className="flex items-center gap-3">
-                    <img className="w-14 h-14" src="/coding.png"/>
-                    <p className="text-4xl font-extrabold text-white">Dev<span className='text-blue-700'>Scope</span></p>
-                </div>
+                <Link to="/">
+                    <div className="flex items-center gap-3">
+                        <img className="w-14 h-14" src="/coding.png"/>
+                        <p className="text-4xl font-extrabold text-white">Dev<span className='text-blue-700'>Scope</span></p>
+                    </div>
+                </Link>
 
                 <div className="flex gap-5 text-xl text-white">
                     <Link to="/">Home</Link>

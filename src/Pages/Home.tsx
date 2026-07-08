@@ -1,5 +1,6 @@
 import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   interface Article {
@@ -57,12 +58,15 @@ function Home() {
           </div>
 
           <div className="flex gap-5">
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-2xl font-bold text-white rounded-lg p-5"
-              type="button"
-            >
-              Explore Articles
-            </button>
+            <Link to="/articles">
+              <button
+                className="bg-blue-600 hover:bg-blue-700 text-2xl font-bold text-white rounded-lg p-5 cursor-pointer"
+                type="button"
+              >
+                Explore Articles
+              </button>
+            </Link>
+
             <button
               className="border border-gray-600 bg-transparent hover:bg-gray-800 text-2xl font-bold text-white rounded-lg p-5"
               type="button"
@@ -114,7 +118,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="text-white mt-40 border border-gray-600 px-8 py-5 rounded-xl mb-20">
+      <div className="bg-zinc-900 text-white mt-40 border border-gray-800 px-8 py-5 rounded-xl mb-20">
         <div className="text-4xl font-extrabold mb-5">Editor's Choice</div>
 
         <div className="flex">
@@ -141,23 +145,25 @@ function Home() {
 
             <p className="flex gap-2 mb-5"><span><Tags /></span>{articles[0]?.tag_list.join(" • ")}</p>
 
-            <button className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Read Article</button>
+            <Link to={`/articles/${articles[0]?.id}`}>
+                <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Read Article<ArrowRight size={18}/></button>
+            </Link>
           </div>
         </div>
       </div>
 
-      <div className="text-white border border-gray-600 px-8 py-5 rounded-xl mb-20">
+      <div className="text-white border border-gray-800 px-8 py-5 rounded-xl mb-20">
           <div className="flex justify-between mb-3">
             <div className="text-4xl font-extrabold mb-5">Latest Articles</div>
-            <div className="flex gap-2">View All<span><ArrowRight/></span></div>
+            <Link to="/articles"><div className="flex gap-2 hover:text-blue-500 duration-300">View All<span><ArrowRight/></span></div></Link>
           </div>
-          <div className="flex gap-15">
+          <div className="grid grid-cols-3 gap-10">
             {latestArticles.map(function(article){
               return (
-                <div>
+                <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl overflow-hidden hover:border-blue-500 hover:shadow-2xl hover:-translate-y-2 duration-300">
                   <div><img className="rounded-2xl hover:scale-105 transition-transform duration-300 mb-5" src={article.cover_image}/></div>
-                  <div className="text-2xl font-medium mb-5">{article.title}</div>
-                  <div className="mb-8">{article.description}</div>
+                  <div className="text-2xl font-medium mb-5 line-clamp-2">{article.title}</div>
+                  <div className="mb-8 line-clamp-3">{article.description}</div>
                   <div className="flex gap-2 mb-2"><span><UserRound /></span>{article?.user.name}</div>
                   <div className="flex gap-2 mb-2"><span><Tags /></span>{article?.tag_list.join(" • ")}</div>
                   <div>
@@ -170,14 +176,16 @@ function Home() {
                     </div>
                     <div className="flex gap-2 mb-5"><span><Clock /></span>{article?.reading_time_minutes} min read</div>
                   </div>
-                  <button className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Read Article</button>
+                  <Link to={`/articles/${article.id}`}>
+                     <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg    hover:cursor-pointer" type="button">Read Article<ArrowRight size={18}/></button>
+                  </Link>
                 </div>
               )
             })}
           </div>
       </div>
 
-      <div className="text-white border border-gray-600 px-8 py-5 rounded-xl flex justify-between">
+      <div className="bg-zinc-900 text-white border border-gray-800 px-8 py-5 rounded-xl flex justify-between mb-5">
         <div>
           <div className="flex items-center gap-2 bg-gray-800 py-2 px-3 w-fit rounded-2xl mt-10 mb-5"><span><Sparkles/></span>Be a Contributor</div>
           <div className="text-4xl font-extrabold mb-3">Ready to Share Your Knowledge?</div>
