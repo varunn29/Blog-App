@@ -67,12 +67,15 @@ function Home() {
               </button>
             </Link>
 
+            <Link to="/createpost">
             <button
-              className="border border-gray-600 bg-transparent hover:bg-gray-800 text-2xl font-bold text-white rounded-lg p-5"
+              className="border border-gray-600 bg-transparent hover:bg-gray-800 text-2xl font-bold text-white rounded-lg p-5 cursor-pointer"
               type="button"
             >
               Create a post
             </button>
+            </Link>
+
           </div>
         </div>
 
@@ -190,7 +193,7 @@ function Home() {
           <div className="flex items-center gap-2 bg-gray-800 py-2 px-3 w-fit rounded-2xl mt-10 mb-5"><span><Sparkles/></span>Be a Contributor</div>
           <div className="text-4xl font-extrabold mb-3">Ready to Share Your Knowledge?</div>
           <div className="font-bold mb-8 max-w-xl">Every developer has something valuable to share. Write tutorials, document your projects, and inspire others with your programming journey.</div>
-          <button className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Create Your First Post</button>
+          <Link to="/createpost"><button className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Create Your First Post</button></Link>
         </div>
 
         <div><img className="w-140 h-80 object-contain" src="2301.i032.016.S.m005.c13.isometric gamers illustration.jpg"/></div>

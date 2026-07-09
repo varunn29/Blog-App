@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import Loading from "../Components/Loading";
 
 function Articles()
 {
@@ -33,6 +35,11 @@ function Articles()
     useEffect(function(){
         fetchArticles();
     }, [page]);
+
+    if(articles.length === 0)
+    {
+        return <Loading/>
+    }
 
     return (
         <div className="max-w-7xl mx-auto text-white px-8 py-10">
@@ -79,7 +86,9 @@ function Articles()
                                 </div>
                                 <div className="flex gap-2 mb-5"><span><Clock /></span>{article?.reading_time_minutes} min read</div>
                             </div>
+                            <Link to={`/articles/${article.id}`}>
                             <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Read Article<span><ArrowRight size={18}/></span></button>
+                            </Link>
                         </div>
                         )
                     })}
