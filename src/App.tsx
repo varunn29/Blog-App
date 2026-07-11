@@ -6,6 +6,7 @@ import About from "./Pages/About"
 import Articles from "./Pages/Articles"
 import ArticleDetails from "./Pages/ArticleDetails"
 import CreatePost from "./Pages/CreatePost"
+import MyPosts from "./Pages/MyPosts"
 
 function App()
 {
@@ -18,6 +19,7 @@ function App()
         <Route path="/articles" element={<Articles/>}/>
         <Route path="/createpost" element={<CreatePost/>}/>
         <Route path="/articles/:id" element={<ArticleDetails />}/>
+        <Route path="/myposts" element={<MyPosts/>}/>
       </Routes>
       <Footer/>
     </div>

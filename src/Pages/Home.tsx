@@ -1,6 +1,7 @@
 import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../Components/Loading";
 
 function Home() {
   interface Article {
@@ -34,6 +35,11 @@ function Home() {
   }, []);
 
   const latestArticles : Article[] = articles.slice(1,4);
+
+  if(articles.length === 0)
+  {
+    return <Loading/>
+  }
 
   return (
     <div className="p-10">

@@ -98,11 +98,13 @@ function Articles()
                 <button onClick={function(){
                     if(page > 1){
                         setPage(prev => prev-1);
+                        setArticles([]);
                     }
                 }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer"><ArrowLeft size={18}/>Prev</button>
                 <p>Page {page}</p>
                 <button onClick={function(){
                     setPage(prev => prev + 1);
+                    setArticles([]);
                 }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer">Next<ArrowRight size={18}/></button>
             </div>
         </div>

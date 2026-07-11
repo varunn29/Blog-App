@@ -16,14 +16,14 @@ function Navbar()
                 <div className="flex gap-5 text-xl text-white">
                     <Link to="/">Home</Link>
                     <Link to="/articles">Articles</Link>
-                    <p>My Posts</p>
+                    <Link to="/myposts">My Posts</Link>
                     <Link to="/about">About</Link>
                 </div>
 
                 <div className='flex items-center gap-5 text-white'>
                     <div className='border border-blue-500 rounded-full p-2'><Search/></div>
                     <div className='border border-blue-500 rounded-full p-2'><Moon/></div>
-                    <div className='flex items-center text-base gap-2 border border-blue-500 rounded-full p-2'><span><Plus /></span><span className='font-medium'>Create</span></div>
+                    <Link to="/createpost"><div className='flex items-center text-base gap-2 border border-blue-500 rounded-full p-2'><span><Plus /></span><span className='font-medium'>Create</span></div></Link>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Footer()
 {
@@ -15,10 +16,10 @@ function Footer()
 
                 <div className="space-y-1">
                     <p className="text-lg tracking-wide font-bold mb-2">Quick Links</p>
-                    <p className="cursor-pointer hover:text-blue-400 transition-all duration-300">Home</p>
-                    <p className="cursor-pointer hover:text-blue-400 transition-all duration-300">Articles</p>
-                    <p className="cursor-pointer hover:text-blue-400 transition-all duration-300">Create Post</p>
-                    <p className="cursor-pointer hover:text-blue-400 transition-all duration-300">About</p>
+                    <Link to="/"><p className="cursor-pointer hover:text-blue-400 transition-all duration-300">Home</p></Link>
+                    <Link to="/articles"><p className="cursor-pointer hover:text-blue-400 transition-all duration-300">Articles</p></Link>
+                    <Link to="/createpost"><p className="cursor-pointer hover:text-blue-400 transition-all duration-300">Create Post</p></Link>
+                    <Link to="/about"><p className="cursor-pointer hover:text-blue-400 transition-all duration-300">About</p></Link>
                 </div>
 
                 <div className="space-y-1">
@@ -37,7 +38,7 @@ function Footer()
                 </div>
             </div>
             <hr className="border-zinc-800 my-10" />
-            <div className="text-white mb-10 w-[50%] flex justify-between m-auto"><span>© 2026 Blogger</span><span>Built with React + TypeScript</span></div>
+            <div className="text-white mb-10 w-[50%] flex justify-between m-auto"><span>© 2026 DevScope</span><span>Built with React + TypeScript</span></div>
             <div className="text-zinc-500 italic -mb-15 text-center">Keep learning. Keep building. Keep sharing. 🚀</div>
         </div>
     )
