@@ -42,7 +42,7 @@ function Home() {
   }
 
   return (
-    <div className="p-10">
+    <div className="p-15">
       <div className="text-white flex">
         <div className="flex-1">
           <div className="flex items-center gap-2 bg-gray-800 py-2 px-3 w-fit rounded-2xl mb-5">
@@ -202,7 +202,7 @@ function Home() {
           <Link to="/createpost"><button className="bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer" type="button">Create Your First Post</button></Link>
         </div>
 
-        <div><img className="w-140 h-80 object-contain" src="2301.i032.016.S.m005.c13.isometric gamers illustration.jpg"/></div>
+        <div><img className="h-80 object-contain" src="2301.i032.016.S.m005.c13.isometric gamers illustration.jpg"/></div>
       </div>
     </div>
   );

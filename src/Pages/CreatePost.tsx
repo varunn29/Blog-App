@@ -1,6 +1,7 @@
 import { FileText, Image, Tags, TextAlignStart, SquarePen } from 'lucide-react';
 import { useContext, useState } from "react";
 import { PostsContext } from "../Context/PostsContext";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost()
 {
@@ -8,8 +9,11 @@ function CreatePost()
     const [description, setDescription] = useState("");
     const [tags, setTags] = useState("");
     const [content, setContent] = useState("");
+    const [coverImage, setCoverImage] = useState("");
 
     const { posts, setPosts } = useContext(PostsContext);
+
+    const [published, setPublished] = useState(false);
 
     const newPost = {
         id: Date.now(),
@@ -17,15 +21,24 @@ function CreatePost()
         description,
         tags,
         content, 
-        publishedAt: new Date()
+        publishedAt: new Date(),
+        coverImage
     };
 
     function handleSubmit(e)
     {
         e.preventDefault();
 
-        setPosts(...posts, newPost);
+        setPosts([...posts, newPost]);
+
+        setPublished(true);
+
+        setTimeout(function(){
+            navigate("/myposts");
+        }, 2000);
     }
+
+    const navigate = useNavigate();
 
     return (
         <div className="text-white p-10 max-w-6xl m-auto">
@@ -53,7 +66,9 @@ function CreatePost()
 
                 <div className="mb-8">
                     <label className="flex gap-2 items-center text-xl font-bold" htmlFor="image"><Image/>Cover Image</label>
-                    <input className="w-full mt-3 rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 outline-none focus:border-blue-500 " id="image" type="file" accept="image/*"/>
+                    <input onChange={function(e){
+                        setCoverImage(e.target.value)
+                    }} className="w-full mt-3 rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 outline-none focus:border-blue-500" id="image" type="text" value={coverImage} placeholder='Paste image URL...'/>
                 </div>
 
                 <div className="mb-8">
@@ -70,7 +85,12 @@ function CreatePost()
 
                 <div className="flex justify-end gap-4 mt-5">
                     <button className="px-6 py-3 rounded-xl border border-zinc-700 hover:bg-zinc-800">Cancel</button>
-                    <button type='submit' className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold">Publish</button>
+                    <button type='submit' className={`px-8 py-3 rounded-xl font-semibold
+                           ${published 
+                                 ? "bg-green-600 text-white cursor-default shadow-lg shadow-green-500/20"
+                                 : "bg-blue-600 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/20 cursor-pointer"
+                            }
+                        `}>{published ? "✓ Published" : "Publish"}</button>
                 </div>
             </form>
         </div>

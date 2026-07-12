@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Loading from "../Components/Loading";
+import { PostsContext } from "../Context/PostsContext";
 
 function ArticleDetails()
 {
@@ -14,7 +15,6 @@ function ArticleDetails()
     published_at: string;
     reading_time_minutes: number;
     tags: string[];
-    url: string;
     body_markdown: string;
 
     user: {
@@ -26,6 +26,19 @@ function ArticleDetails()
     const params = useParams();
     const [article, setArticle] = useState<Article>();
 
+    const {posts} = useContext(PostsContext);
+
+    const result = posts.find(function(post){
+        if(Number(params.id) === post.id)
+        {
+            return post;
+        }
+        else
+        {
+            return null;
+        }
+    })
+
     async function fetchData()
     {
         const response = await fetch(`https://dev.to/api/articles/${params.id}`);
@@ -36,7 +49,29 @@ function ArticleDetails()
     }
 
     useEffect(function(){
-        fetchData();
+        if(result)
+        {
+            const articleFromPost = {
+                id: result.id,
+                title: result.title,
+                description: result.description,
+                cover_image: result.coverImage,
+                published_at: result.publishedAt,
+                body_markdown: result.content,
+                reading_time_minutes: Math.ceil(result.content.trim().split(/\s+/).length / 200),
+                tags: result.tags.split(",").map(tag => tag.trim()),
+                user: {
+                    name: "Catman",
+                    profile_image: ""
+            }
+            }
+
+            setArticle(articleFromPost);
+        }
+        else
+        {
+            fetchData();
+        }
     }, []);
 
     if(!article)
