@@ -1,5 +1,5 @@
 import { Search, Moon, Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function Navbar()
 {
@@ -14,16 +14,55 @@ function Navbar()
                 </Link>
 
                 <div className="flex gap-5 text-xl text-white">
-                    <Link to="/">Home</Link>
-                    <Link to="/articles">Articles</Link>
-                    <Link to="/myposts">My Posts</Link>
-                    <Link to="/about">About</Link>
+                    <NavLink to="/" className={function({isActive}){
+                        if(isActive)
+                        {
+                            return "text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]";
+                        }
+                        else
+                        {
+                            return 'hover:text-blue-500 text-zinc-300 duration-300'
+                        }
+                    }}>Home</NavLink>
+
+                    <NavLink to="/articles" className={function({isActive}){
+                        if(isActive)
+                        {
+                            return "text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]";
+                        }
+                        else
+                        {
+                            return 'hover:text-blue-500 text-zinc-300 duration-300'
+                        }
+                    }}>Articles</NavLink>
+
+                    <NavLink to="/myposts" className={function({isActive}){
+                        if(isActive)
+                        {
+                            return "text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]";
+                        }
+                        else
+                        {
+                            return 'hover:text-blue-500 text-zinc-300 duration-300'
+                        }
+                    }}>My Posts</NavLink>
+
+                    <NavLink to="/about" className={function({isActive}){
+                        if(isActive)
+                        {
+                            return "text-blue-500 drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]";
+                        }
+                        else
+                        {
+                            return 'hover:text-blue-500 text-zinc-300 duration-300'
+                        }
+                    }}>About</NavLink>
                 </div>
 
-                <div className='flex items-center gap-5 text-white'>
-                    <div className='border border-blue-500 rounded-full p-2'><Search/></div>
-                    <div className='border border-blue-500 rounded-full p-2'><Moon/></div>
-                    <Link to="/createpost"><div className='flex items-center text-base gap-2 border border-blue-500 rounded-full p-2'><span><Plus /></span><span className='font-medium'>Create</span></div></Link>
+                <div className='flex items-center gap-8 text-white'>
+                    <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-800/80 border border-zinc-700 hover:bg-blue-600 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-110 transition-all duration-300 cursor-pointer"><Search/></div>
+                    <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-800/80 border border-zinc-700 hover:bg-blue-600 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-110 transition-all duration-300 cursor-pointer"><Moon/></div>
+                    <Link to="/createpost"><div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-blue-500 hover:to-cyan-400 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 cursor-pointer"><span><Plus /></span><span className='font-medium'>Create</span></div></Link>
                 </div>
             </div>
         </div>

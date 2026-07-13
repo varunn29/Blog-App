@@ -1,4 +1,4 @@
-import { FileText, Image, Tags, TextAlignStart, SquarePen } from 'lucide-react';
+import { FileText, Image, Tags, TextAlignStart, SquarePen, LoaderCircle } from 'lucide-react';
 import { useContext, useState } from "react";
 import { PostsContext } from "../Context/PostsContext";
 import { useNavigate } from "react-router-dom";
@@ -93,6 +93,10 @@ function CreatePost()
                         `}>{published ? "✓ Published" : "Publish"}</button>
                 </div>
             </form>
+            
+            <div className='text-right mt-2'>{published && (
+                <p className="inline-flex items-center gap-2 text-lg text-zinc-400"><LoaderCircle size={16} className="animate-spin" /><span>Redirecting to <span className="text-blue-400">My Posts</span></span></p>
+            )}</div>
         </div>
     )
 }
