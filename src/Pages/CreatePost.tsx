@@ -1,7 +1,7 @@
 import { FileText, Image, Tags, TextAlignStart, SquarePen, LoaderCircle } from 'lucide-react';
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PostsContext } from "../Context/PostsContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CreatePost()
 {
@@ -15,11 +15,15 @@ function CreatePost()
 
     const [published, setPublished] = useState(false);
 
+    const navigate = useNavigate();
+
     const newPost = {
         id: Date.now(),
         title,
         description,
-        tags,
+        tags: tags.split(",").map(function(tag){
+        return tag.trim();
+        }),
         content, 
         publishedAt: new Date(),
         coverImage
@@ -29,7 +33,28 @@ function CreatePost()
     {
         e.preventDefault();
 
-        setPosts([...posts, newPost]);
+        if(params.id)
+        {
+            const updatedPosts = posts.map(function(post){
+            if(post.id === Number(params.id))
+            {
+                return {...post,
+                         title, 
+                         description,
+                         content,
+                         coverImage,
+                         tags: tags.split(",").map(tag => tag.trim())
+                }
+            }
+
+            return post;
+        })
+            setPosts(updatedPosts);
+        }
+        else
+        {
+            setPosts([...posts, newPost]);
+        }
 
         setPublished(true);
 
@@ -38,13 +63,28 @@ function CreatePost()
         }, 2000);
     }
 
-    const navigate = useNavigate();
+    const params = useParams();
+
+    useEffect(function(){
+        if(params.id)
+        {
+            const post = posts.find(function(post){
+                return post.id === Number(params.id);
+            })
+
+            setTitle(post.title);
+            setDescription(post.description);
+            setCoverImage(post.coverImage);
+            setContent(post.content);
+            setTags(post.tags.join(", "));
+        }
+    }, [])
 
     return (
         <div className="text-white p-10 max-w-6xl m-auto">
             <div className="text-center mb-12">
-                <h1 className="text-5xl font-extrabold">Create New Post</h1>
-                <p className="text-zinc-400 mt-3 text-lg">Share your knowledge with the developer community.</p>
+                <h1 className="text-5xl font-extrabold">{params.id ? "Update the Existing Post" : "Create New Post"}</h1>
+                <p className="text-zinc-400 mt-3 text-lg">{params.id ? "Update your article and keep it fresh for the developer community" : "Share your knowledge with the developer community"}</p>
             </div>
 
             <form onSubmit={function(e){
@@ -73,7 +113,9 @@ function CreatePost()
 
                 <div className="mb-8">
                     <label className="flex gap-2 items-center text-xl font-bold" htmlFor="tags"><Tags/>Add Tags</label>
-                    <input className="w-full mt-3 rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 outline-none focus:border-blue-500" id="tags" type="text" placeholder="Create tags..."/>
+                    <input onChange={function(e){
+                        setTags(e.target.value);
+                    }} className="w-full mt-3 rounded-xl bg-zinc-800 border border-zinc-700 px-4 py-3 outline-none focus:border-blue-500" id="tags" type="text" value={tags} placeholder="Create tags..."/>
                 </div>
 
                 <div className="mb-8">
@@ -90,7 +132,8 @@ function CreatePost()
                                  ? "bg-green-600 text-white cursor-default shadow-lg shadow-green-500/20"
                                  : "bg-blue-600 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/20 cursor-pointer"
                             }
-                        `}>{published ? "✓ Published" : "Publish"}</button>
+                        `}>{params.id ? (published ? "✓ Changes Saved" : "Save Changes")
+                                      : (published ? "✓ Published" : "Publish")}</button>
                 </div>
             </form>
             

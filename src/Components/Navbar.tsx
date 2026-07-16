@@ -1,8 +1,12 @@
 import { Search, Moon, Plus } from 'lucide-react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 function Navbar()
 {
+    const [search, setSearch] = useState("");
+    const navigate = useNavigate();
+
     return (
         <div>
             <div className="flex justify-between items-center bg-[#111827]/80 backdrop-blur-xl p-4">
@@ -60,9 +64,18 @@ function Navbar()
                 </div>
 
                 <div className='flex items-center gap-8 text-white'>
-                    <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-800/80 border border-zinc-700 hover:bg-blue-600 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-110 transition-all duration-300 cursor-pointer"><Search/></div>
+                    <div><input onChange={function(e){
+                        setSearch(e.target.value);
+                    }} onKeyDown={function(e){
+                        if(e.key === "Enter" && search.trim() !== "")
+                        {
+                            navigate(`/search/${search.trim().toLowerCase()}`);
+                        }
+                    }} value={search} type='text' placeholder='Search articles by tag...' className='border border-zinc-700 h-11 rounded-full w-72 pl-12 pr-4 text-white bg-zinc-900/80 placeholder:text-zinc-500 outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/25 hover:border-zinc-500 duration-300'/></div>
+
                     <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-800/80 border border-zinc-700 hover:bg-blue-600 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-110 transition-all duration-300 cursor-pointer"><Moon/></div>
-                    <Link to="/createpost"><div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-blue-500 hover:to-cyan-400 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 cursor-pointer"><span><Plus /></span><span className='font-medium'>Create</span></div></Link>
+
+                    <Link to="/createpost"><div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:from-blue-500 hover:to-cyan-400 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 cursor-pointer"><span><Plus /></span><span className='font-medium'>Create</span></div></Link>
                 </div>
             </div>
         </div>

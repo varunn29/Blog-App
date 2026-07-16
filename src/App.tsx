@@ -7,6 +7,7 @@ import Articles from "./Pages/Articles"
 import ArticleDetails from "./Pages/ArticleDetails"
 import CreatePost from "./Pages/CreatePost"
 import MyPosts from "./Pages/MyPosts"
+import SearchResults from "./Pages/SearchResults"
 
 function App()
 {
@@ -18,8 +19,10 @@ function App()
         <Route path="/about" element={<About/>}/>
         <Route path="/articles" element={<Articles/>}/>
         <Route path="/createpost" element={<CreatePost/>}/>
+        <Route path="/editpost/:id" element={<CreatePost/>}/>
         <Route path="/articles/:id" element={<ArticleDetails />}/>
         <Route path="/myposts" element={<MyPosts/>}/>
+        <Route path="/search/:tag" element={<SearchResults />} />
       </Routes>
       <Footer/>
     </div>

@@ -59,7 +59,7 @@ function ArticleDetails()
                 published_at: result.publishedAt,
                 body_markdown: result.content,
                 reading_time_minutes: Math.ceil(result.content.trim().split(/\s+/).length / 200),
-                tags: result.tags.split(",").map(tag => tag.trim()),
+                tags: result.tags,
                 user: {
                     name: "Catman",
                     profile_image: ""

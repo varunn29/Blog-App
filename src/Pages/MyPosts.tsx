@@ -1,11 +1,31 @@
-import { Sparkles, SquarePen, UserRound, CalendarDays, Clock, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Sparkles, SquarePen, UserRound, CalendarDays, Clock, ArrowRight, Pencil, Trash2, Tags } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { PostsContext } from "../Context/PostsContext";
 import { useContext } from 'react';
 
 function MyPosts()
 {
-    const {posts} = useContext(PostsContext);
+    const {posts, setPosts} = useContext(PostsContext);
+
+    function updatePosts(id)
+    {
+        const posts = JSON.parse(localStorage.getItem("posts"));
+        const updatedPosts = posts.filter(function(post){
+            if(post.id !== id)
+            {
+                return post;
+            }
+        })
+
+        setPosts(updatedPosts);
+    }
+
+    const navigate = useNavigate();
+
+    function editPosts(id)
+    {
+        navigate(`/editpost/${id}`)
+    }
 
     if(posts.length === 0)
     {
@@ -60,6 +80,7 @@ function MyPosts()
                             <div className="text-2xl font-medium mb-5 line-clamp-2">{post.title}</div>
                             <div className="mb-8 line-clamp-3">{post.description}</div>
                             <div className="flex gap-2 mb-2"><span><UserRound /></span>Catman</div>
+                            <div className="flex gap-2 mb-2"><span><Tags /></span>{post.tags.join(" • ")}</div>
 
                             <div className="flex gap-2 mb-2"><span><CalendarDays /></span>
                                 {new Date(post.publishedAt).toLocaleDateString("en-IN", {
@@ -71,9 +92,21 @@ function MyPosts()
 
                             <div className="flex gap-2 mb-5"><span><Clock /></span>{Math.ceil(post.content.trim().split(/\s+/).length / 200)} min read</div>
 
-                            <Link to={`/articles/${post.id}`}>
-                                <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg    hover:cursor-pointer" type="button">Read Article<ArrowRight size={18}/></button>
-                            </Link>
+                            <div className='flex justify-between items-center'>
+                                <Link to={`/articles/${post.id}`}>
+                                    <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg    hover:cursor-pointer" type="button">Read Article<ArrowRight size={18}/></button>
+                                </Link>
+
+                                <div className='flex gap-3'>
+                                    <button onClick={function(){
+                                        editPosts(post.id);
+                                    }} title='Edit' className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700 hover:bg-blue-600 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300" type='button'><Pencil /></button>
+
+                                    <button onClick={function(){
+                                        updatePosts(post.id);
+                                    }} title='Delete' className="w-11 h-11 flex items-center justify-center rounded-xl bg-zinc-800 border border-zinc-700 hover:bg-red-600 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300" type='button'><Trash2 /></button>
+                                </div>
+                            </div>
                         </div>
                     )
                 })}
