@@ -69,6 +69,7 @@ function Navbar()
                     }} onKeyDown={function(e){
                         if(e.key === "Enter" && search.trim() !== "")
                         {
+                            setSearch("");
                             navigate(`/search/${search.trim().toLowerCase()}`);
                         }
                     }} value={search} type='text' placeholder='Search articles by tag...' className='border border-zinc-700 h-11 rounded-full w-72 pl-12 pr-4 text-white bg-zinc-900/80 placeholder:text-zinc-500 outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/25 hover:border-zinc-500 duration-300'/></div>

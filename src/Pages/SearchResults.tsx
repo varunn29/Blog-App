@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { PostsContext } from "../Context/PostsContext";
 import PopularTechnologies from "../Components/PopularTechnologies";
 import FetchedArticles from "../Components/FetchedArticles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight, ArrowLeft } from "lucide-react";
 import Loading from "../Components/Loading";
 
@@ -27,21 +27,26 @@ function SearchResults()
     const [articles,  setArticles] = useState<Article[]>([]);
     const [page, setPage] = useState<number>(1);
     const [loading, setLoading] = useState(false);
+    const [search, setSearch] = useState("");
+    
 
     const params = useParams();
     const { tag, setTag } = useContext(PostsContext);
+    const navigate = useNavigate();
 
     async function fetchData()
     {
+        setLoading(true);
         const response = await fetch(`https://dev.to/api/articles?tag=${params.tag}&per_page=9&page=${page}`);
         const data = await response.json();
 
         setArticles(data);
+        setLoading(false);
     }
 
     useEffect(function(){
         fetchData();
-    }, [page])
+    }, [params.tag, page])
 
     if(loading)
     {
@@ -56,7 +61,15 @@ function SearchResults()
             </div>
 
             <div className="mb-12">
-                <input className="w-full h-14 rounded-xl bg-zinc-800 border border-zinc-700 px-6 outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/20" type="text" placeholder="Search articles by tag..."/>
+                <input onChange={function(e){
+                    setSearch(e.target.value);
+                }} onKeyDown={function(e){
+                    if(e.key === "Enter" && search.trim() !== "")
+                        {
+                            setSearch("");
+                            navigate(`/search/${search.trim().toLowerCase()}`);
+                        }
+                }} className="w-full h-14 rounded-xl bg-zinc-800 border border-zinc-700 px-6 outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/20" type="text" placeholder="Search articles by tag..."/>
             </div>
 
             <div className="bg-linear-to-r from-blue-600/20 to-cyan-500/20 border border-blue-500/30 rounded-2xl p-6 mb-12">
@@ -69,7 +82,7 @@ function SearchResults()
                 <PopularTechnologies/>
             </div>
 
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex justify-between items-center">
                 <div>
                     <h2 className="text-4xl font-bold">
                         Articles
@@ -81,7 +94,7 @@ function SearchResults()
                 </div>
             </div>
             
-            <div className="flex flex-col items-center justify-center text-center py-20">
+            <div className="flex flex-col items-center justify-center text-center py-10">
                 {articles.length === 0
                 ? 
                 <div>
