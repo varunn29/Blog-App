@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { PostsContext } from "../Context/PostsContext";
+import { useEffect, useState } from "react";
 import PopularTechnologies from "../Components/PopularTechnologies";
 import FetchedArticles from "../Components/FetchedArticles";
 import { useNavigate, useParams } from "react-router-dom";
-import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import Loading from "../Components/Loading";
 
 function SearchResults()
@@ -31,7 +30,6 @@ function SearchResults()
     
 
     const params = useParams();
-    const { tag, setTag } = useContext(PostsContext);
     const navigate = useNavigate();
 
     async function fetchData()
@@ -79,7 +77,7 @@ function SearchResults()
             </div>
 
             <div className="my-16">
-                <PopularTechnologies/>
+                <PopularTechnologies setPage={setPage} setArticles={setArticles}/>
             </div>
 
             <div className="flex justify-between items-center">

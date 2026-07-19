@@ -1,9 +1,30 @@
 import { useContext } from "react";
 import { PostsContext } from "../Context/PostsContext";
 
-function PopularTechnologies(props)
+interface Article {
+    id: number;
+    cover_image: string | null;
+    title: string;
+    description: string;
+    published_at: string;
+    reading_time_minutes: number;
+    tag_list: string[];
+    url: string;
+
+    user: {
+      name: string;
+      profile_image: string;
+    };
+    }
+
+interface PopularTechnologiesProps {
+    setPage: React.Dispatch<React.SetStateAction<number>>;
+    setArticles: React.Dispatch<React.SetStateAction<Article[]>>;
+}
+
+function PopularTechnologies(props : PopularTechnologiesProps)
 {
-    const { tag, setTag } = useContext(PostsContext);
+    const { setTag } = useContext(PostsContext);
 
     return (
         <div className="max-w-7xl mx-auto">

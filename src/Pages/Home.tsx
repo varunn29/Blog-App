@@ -134,7 +134,7 @@ function Home() {
           <div>
             <img
               className="w-[80%] h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300"
-              src={articles[0]?.cover_image}
+              src={articles[0]?.cover_image ?? ""}
             />
           </div>
 
@@ -170,7 +170,7 @@ function Home() {
             {latestArticles.map(function(article){
               return (
                 <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl overflow-hidden hover:border-blue-500 hover:shadow-2xl hover:-translate-y-2 duration-300">
-                  <div><img className="rounded-2xl hover:scale-105 transition-transform duration-300 mb-5" src={article.cover_image}/></div>
+                  <div><img className="rounded-2xl hover:scale-105 transition-transform duration-300 mb-5" src={article.cover_image ?? ""}/></div>
                   <div className="text-2xl font-medium mb-5 line-clamp-2">{article.title}</div>
                   <div className="mb-8 line-clamp-3">{article.description}</div>
                   <div className="flex gap-2 mb-2"><span><UserRound /></span>{article?.user.name}</div>

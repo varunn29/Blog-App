@@ -1,16 +1,42 @@
 import { createContext, useEffect, useState } from "react";
 
-const PostsContext = createContext(null);
+interface Post {
+    id: number;
+    title: string;
+    description: string;
+    coverImage: string;
+    content: string;
+    tags: string[];
+    publishedAt: string;
+}
 
-function PostsProvider({ children }) {
+interface PostsContextType {
+    posts: Post[];
+    setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
+    tag: string;
+    setTag: React.Dispatch<React.SetStateAction<string>>;
+}
+
+interface PostsProviderProps {
+    children: React.ReactNode;
+}
+
+const PostsContext = createContext<PostsContextType>({
+    posts: [],
+    setPosts: () => {},
+    tag: "",
+    setTag: () => {},
+    });
+
+function PostsProvider({ children } : PostsProviderProps) {
     
-    function getPosts()
+    function getPosts() : Post[]
     {
         const postsData = localStorage.getItem("posts");
-        const postsArray = JSON.parse(postsData);
 
-        if(postsArray)
+        if(postsData)
         {
+            const postsArray = JSON.parse(postsData) as Post[];
             return postsArray;
         }
         else
@@ -19,10 +45,8 @@ function PostsProvider({ children }) {
         }
     }
 
-    const [posts, setPosts] = useState(getPosts);
+    const [posts, setPosts] = useState<Post[]>(getPosts);
     const [tag, setTag] = useState("");
-    const [articles,  setArticles] = useState<Article[]>([]);
-    const [page, setPage] = useState<number>(1);
 
     useEffect(function(){
         localStorage.setItem("posts", JSON.stringify(posts));

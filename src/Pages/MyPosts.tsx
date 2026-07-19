@@ -7,9 +7,8 @@ function MyPosts()
 {
     const {posts, setPosts} = useContext(PostsContext);
 
-    function updatePosts(id)
+    function updatePosts(id : number)
     {
-        const posts = JSON.parse(localStorage.getItem("posts"));
         const updatedPosts = posts.filter(function(post){
             if(post.id !== id)
             {
@@ -22,7 +21,7 @@ function MyPosts()
 
     const navigate = useNavigate();
 
-    function editPosts(id)
+    function editPosts(id : number)
     {
         navigate(`/editpost/${id}`)
     }

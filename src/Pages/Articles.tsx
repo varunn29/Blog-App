@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import Loading from "../Components/Loading";
 import PopularTechnologies from "../Components/PopularTechnologies";
 import { PostsContext } from "../Context/PostsContext";
@@ -24,7 +23,7 @@ function Articles()
     };
     }
 
-    const { tag, setTag } = useContext(PostsContext);
+    const { tag } = useContext(PostsContext);
 
     const [articles,  setArticles] = useState<Article[]>([]);
     const [page, setPage] = useState<number>(1);

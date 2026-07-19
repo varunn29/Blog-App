@@ -17,7 +17,11 @@ function CreatePost()
 
     const navigate = useNavigate();
 
-    const newPost = {
+    function handleSubmit(e : React.FormEvent<HTMLFormElement>)
+    {
+        e.preventDefault();
+
+        const newPost = {
         id: Date.now(),
         title,
         description,
@@ -25,13 +29,9 @@ function CreatePost()
         return tag.trim();
         }),
         content, 
-        publishedAt: new Date(),
+        publishedAt: new Date().toISOString(),
         coverImage
-    };
-
-    function handleSubmit(e)
-    {
-        e.preventDefault();
+        };
 
         if(params.id)
         {
@@ -72,11 +72,14 @@ function CreatePost()
                 return post.id === Number(params.id);
             })
 
-            setTitle(post.title);
-            setDescription(post.description);
-            setCoverImage(post.coverImage);
-            setContent(post.content);
-            setTags(post.tags.join(", "));
+            if (post)
+            {
+                setTitle(post.title);
+                setDescription(post.description);
+                setCoverImage(post.coverImage);
+                setContent(post.content);
+                setTags(post.tags.join(", "));
+            }
         }
     }, [])
 
@@ -87,7 +90,7 @@ function CreatePost()
                 <p className="text-zinc-400 mt-3 text-lg">{params.id ? "Update your article and keep it fresh for the developer community" : "Share your knowledge with the developer community"}</p>
             </div>
 
-            <form onSubmit={function(e){
+            <form onSubmit={function(e : React.FormEvent<HTMLFormElement>){
                 handleSubmit(e);
             }} className="flex flex-col border border-zinc-800 rounded-3xl shadow-xl bg-zinc-900 p-10">
                 <div className="mb-8">

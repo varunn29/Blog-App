@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import { Sparkles, UserRound, CalendarDays, Clock, Tags, ArrowRight } from "lucide-react";
+import { UserRound, CalendarDays, Clock, Tags} from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Loading from "../Components/Loading";
 import { PostsContext } from "../Context/PostsContext";
@@ -82,7 +82,7 @@ function ArticleDetails()
     return (
         <div>
             <div className="text-white max-w-5xl mx-auto px-8 py-10">
-                <div><img className="w-full h-[450px] object-cover rounded-3xl mb-8" src={article?.cover_image}/></div>
+                <div><img className="w-full h-[450px] object-cover rounded-3xl mb-8" src={article?.cover_image ?? ""}/></div>
                 <div className="flex gap-2 mb-6 bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm"><span><Tags /></span>{article.tags.join(" • ")}</div>
                 <div className="font-extrabold text-6xl leading-tight mb-6">{article.title}</div>
                 <div className="text-zinc-400 leading-8 text-xl mb-8">{article.description}</div>
