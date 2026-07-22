@@ -56,28 +56,28 @@ function Articles()
     }
 
     return (
-        <div className="max-w-7xl mx-auto text-white px-8 py-10">
-            <div className="mb-20">
-                <div className="text-6xl font-extrabold mb-6 text-center">Articles</div>
-                <div className="text-zinc-400 text-xl text-center">Discover the latest programming articles from the DEV Community API.</div>
+        <div className="max-w-7xl mx-auto text-white px-5 md:px-8 py-8 md:py-10">
+            <div className="mb-12 md:mb-20">
+                <div className="text-4xl md:text-6xl font-extrabold mb-4 md:mb-6 text-center">Articles</div>
+                <div className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto leading-7 text-center">Discover the latest programming articles from the DEV Community API.</div>
             </div>
 
             <PopularTechnologies setPage={setPage} setArticles={setArticles}/>
 
             <FetchedArticles articles={articles}/>
 
-            <div className="flex justify-center items-center gap-10">
+            <div className="flex justify-center items-center gap-4 md:gap-10">
                 <button onClick={function(){
                     if(page > 1){
                         setPage(prev => prev-1);
                         setArticles([]);
                     }
-                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer"><ArrowLeft size={18}/>Prev</button>
-                <p>Page {page}</p>
+                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-3 md:px-5 md:py-3 text-sm md:text-base font-semibold rounded-lg hover:cursor-pointer"><ArrowLeft size={18}/>Prev</button>
+                <p className="text-sm md:text-base font-medium">Page {page}</p>
                 <button onClick={function(){
                     setPage(prev => prev + 1);
                     setArticles([]);
-                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer">Next<ArrowRight size={18}/></button>
+                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-3 md:px-5 md:py-3 text-sm md:text-base font-semibold rounded-lg hover:cursor-pointer">Next<ArrowRight size={18}/></button>
             </div>
         </div>
     )

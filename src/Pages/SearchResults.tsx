@@ -53,9 +53,9 @@ function SearchResults()
 
     return (
         <div className="max-w-7xl mx-auto text-white px-8 py-10">
-            <div className="text-center mb-16">
-                <h1 className="text-6xl font-extrabold mb-4">Search Results</h1>
-                <p className="text-xl text-zinc-400">Find articles from the DEV Community by technology or tag.</p>
+            <div className="text-center mb-10 md:mb-16">
+                <h1 className="text-4xl md:text-6xl font-extrabold mb-4">Search Results</h1>
+                <p className="text-base md:text-xl leading-7 max-w-xl mx-auto text-zinc-400">Find articles from the DEV Community by technology or tag.</p>
             </div>
 
             <div className="mb-12">
@@ -67,11 +67,11 @@ function SearchResults()
                             setSearch("");
                             navigate(`/search/${search.trim().toLowerCase()}`);
                         }
-                }} className="w-full h-14 rounded-xl bg-zinc-800 border border-zinc-700 px-6 outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/20" type="text" placeholder="Search articles by tag..."/>
+                }} className="w-full h-14 rounded-xl bg-zinc-800 border border-zinc-700 px-4 md:px-6 outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-500/20" type="text" placeholder="Search articles by tag..."/>
             </div>
 
-            <div className="bg-linear-to-r from-blue-600/20 to-cyan-500/20 border border-blue-500/30 rounded-2xl p-6 mb-12">
-                <h2 className="text-3xl font-bold">Showing results for <span className="text-blue-400 capitalize">{params.tag}</span></h2>
+            <div className="bg-linear-to-r from-blue-600/20 to-cyan-500/20 border border-blue-500/30 rounded-2xl p-5 md:p-6 mb-12">
+                <h2 className="text-2xl md:text-3xl leading-tight font-bold">Showing results for <span className="text-blue-400 capitalize">{params.tag}</span></h2>
 
                 <p className="text-zinc-400 mt-2">Found {articles.length} matching articles from the DEV Community.</p>
             </div>
@@ -82,43 +82,43 @@ function SearchResults()
 
             <div className="flex justify-between items-center">
                 <div>
-                    <h2 className="text-4xl font-bold">
+                    <h2 className="text-2xl md:text-4xl font-bold">
                         Articles
                     </h2>
 
-                    <p className="text-zinc-400 mt-2">
+                    <p className="text-base md:text-lg text-zinc-400 mt-2 leading-7">
                         Browse the articles matching your search.
                     </p>
                 </div>
             </div>
             
-            <div className="flex flex-col items-center justify-center text-center py-10">
+            <div className="flex flex-col items-center justify-center text-center py-8 md:py-10">
                 {articles.length === 0
                 ? 
                 <div>
-                    <div className="text-7xl mb-6">🔍</div>
-                    <h2 className="text-3xl font-bold mb-3"> No articles found</h2>
-                    <p className="text-zinc-400">Try searching for another technology or choose one from below.</p>
+                    <div className="text-6xl md:text-7xl mb-6">🔍</div>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3"> No articles found</h2>
+                    <p className="text-base md:text-lg max-w-sm leading-7 text-zinc-400">Try searching for another technology or choose one from below.</p>
                 </div>
                 :
                 <FetchedArticles articles={articles}/>
                 }
             </div>
 
-            <div className="flex justify-center items-center gap-10">
+            <div className="flex justify-center items-center gap-4 md:gap-10">
                 <button onClick={function(){
                     if(page > 1){
                         setPage(prev => prev-1);
                         setArticles([]);
                     }
-                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer"><ArrowLeft size={18}/>Prev</button>
+                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-3 md:px-5 md:py-3 text-sm md:text-base font-semibold rounded-lg hover:cursor-pointer"><ArrowLeft size={18}/>Prev</button>
 
-                <p>Page {page}</p>
+                <p className="text-sm md:text-base font-medium">Page {page}</p>
 
                 <button onClick={function(){
                     setPage(prev => prev + 1);
                     setArticles([]);
-                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 p-3 rounded-lg hover:cursor-pointer">Next<ArrowRight size={18}/></button>
+                }} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-3 md:px-5 md:py-3 text-sm md:text-base font-semibold rounded-lg hover:cursor-pointer">Next<ArrowRight size={18}/></button>
             </div>
         </div>
     )
