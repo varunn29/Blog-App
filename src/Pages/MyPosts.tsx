@@ -29,16 +29,16 @@ function MyPosts()
     if(posts.length === 0)
     {
         return (
-        <div className="text-white mx-auto px-15 py-12">
-            <div className="bg-zinc-900 border border-gray-800 rounded-xl px-5 md:px-8 py-8 md:py-5 mb-20 flex flex-col md:flex-row gap-10 md:gap-0 justify-between items-center">
-                <div>
+        <div className="max-w-[1440px] mx-auto text-white px-5 md:px-8 py-8 md:py-12">
+            <div className="bg-zinc-900 border border-gray-800 rounded-xl px-5 md:px-8 py-8 md:py-5 mb-20 flex flex-col md:flex-row gap-12 md:gap-120 items-center">
+                <div className='w-full md:w-1/2'>
                     <div className="flex items-center gap-2 bg-gray-800 py-2 px-3 w-fit rounded-2xl mb-3"><span><Sparkles/></span>Every Post Matters</div>
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-3 leading-tight">My Posts</h1>
                     <p className="text-zinc-400 text-base md:text-xl leading-7 md:leading-8 max-w-xl mb-8">Manage all your published articles, update existing posts, and keep track of your writing journey.</p>
                     <Link to="/createpost"><button className="bg-blue-600 hover:bg-blue-700 px-5 md:px-7 py-3 md:py-4 text-sm md:text-base rounded-xl font-semibold hover:scale-105 duration-300 cursor-pointer hover:shadow-xl hover:shadow-blue-500/20">Create New Post</button></Link>
                 </div>
                 
-                <div><img className="w-full max-w-xs mt-6 md:mt-0 md:w-auto md:h-80 object-contain" src="/2192247.jpg"/></div>
+                <div className='w-full md:w-1/2'><img className="w-full max-w-md mt-6 md:mt-0 object-contain" src="/2192247.jpg"/></div>
             </div>
 
             <div className="relative bg-zinc-900 border border-zinc-800 rounded-3xl px-6 md:px-10 py-12 md:py-20 text-center overflow-hidden">
@@ -59,19 +59,19 @@ function MyPosts()
     }
 
     return (
-        <div className="text-white mx-auto px-15 py-12">
-            <div className="bg-zinc-900 border border-gray-800 rounded-xl px-5 md:px-8 py-8 md:py-5 mb-20 flex flex-col md:flex-row gap-10 md:gap-0 justify-between items-center">
-                <div>
+        <div className="max-w-[1440px] mx-auto text-white px-5 md:px-8 py-8 md:py-12">
+            <div className="bg-zinc-900 border border-gray-800 rounded-xl px-5 md:px-8 py-8 md:py-5 mb-20 flex flex-col md:flex-row gap-12 md:gap-120 items-center">
+                <div className='w-full md:w-1/2'>
                     <div className="flex items-center gap-2 bg-gray-800 py-2 px-3 w-fit rounded-2xl mb-3"><span><Sparkles/></span>Every Post Matters</div>
                     <h1 className="text-4xl md:text-6xl font-extrabold mb-3 leading-tight">My Posts</h1>
                     <p className="text-zinc-400 text-base md:text-xl leading-7 md:leading-8 max-w-xl mb-8">Manage all your published articles, update existing posts, and keep track of your writing journey.</p>
                     <Link to="/createpost"><button className="bg-blue-600 hover:bg-blue-700 px-5 md:px-7 py-3 md:py-4 text-sm md:text-base rounded-xl font-semibold hover:scale-105 duration-300 cursor-pointer hover:shadow-xl hover:shadow-blue-500/20">Create New Post</button></Link>
                 </div>
                 
-                <div><img className="w-full max-w-xs mt-6 md:mt-0 md:w-auto md:h-80 object-contain" src="/2192247.jpg"/></div>
+                <div className='w-full md:w-1/2'><img className="w-full max-w-md mt-6 md:mt-0 object-contain" src="/2192247.jpg"/></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 border border-gray-800 px-8 py-5 rounded-xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 border border-gray-800 px-5 md:px-8 py-8 md:py-5 rounded-xl">
                 {posts.map(function(post){
                     return (
                         <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl overflow-hidden hover:border-blue-500 hover:shadow-2xl hover:-translate-y-2 duration-300">

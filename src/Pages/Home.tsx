@@ -42,9 +42,9 @@ function Home() {
   }
 
   return (
-    <div className="max-w-8xl p-15">
-      <div className="text-white flex flex-col md:flex-row">
-        <div className="flex-1">
+    <div className="max-w-[1440px] mx-auto px-5 md:px-8 py-8 md:py-10">
+      <div className="text-white flex flex-col md:flex-row items-center md:gap-5">
+        <div className="w-full md:w-[48%]">
           <div className="flex items-center gap-2 bg-gray-800 py-2 px-3 w-fit rounded-2xl mb-5">
             <span>
               <Sparkles />
@@ -58,7 +58,7 @@ function Home() {
             </span>
             <br></br>Share. Grow.
           </div>
-          <div className="max-w-xl text-lg text-gray-300 leading-8 mb-15">
+          <div className="max-w-lg text-lg text-gray-300 leading-8 mb-15">
             Explore thousands of articles from the DEV Community and create your
             own developer journal
           </div>
@@ -85,42 +85,42 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex-1">
-          <div className="relative hidden md:block">
+        <div className="w-full md:w-[52%]">
+          <div className="relative hidden md:block h-[520px]">
             <img
-              className="w-20 h-20 absolute top-0 right-80 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[8%] left-[50%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/atom.png"
             />
             <img
-              className="w-20 h-20 absolute top-25 right-120 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[28%] left-[18%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/css-3.png"
             />
             <img
-              className="w-20 h-20 absolute top-25 right-38 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[28%] left-[82%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/html.png"
             />
             <img
-              className="w-20 h-20 absolute top-60 right-144 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[58%] left-[12%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/node-js.png"
             />
             <img
-              className="w-20 h-20 absolute top-60 right-14 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[58%] left-[88%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/python.png"
             />
             <img
-              className="w-20 h-20 absolute top-95 right-120 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[85%] left-[22%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/js.png"
             />
             <img
-              className="w-20 h-20 absolute top-95 right-38 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[85%] left-[78%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/typescript.png"
             />
             <img
-              className="w-20 h-20 absolute top-120 right-80 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[98%] left-[50%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/claude-ai.webp"
             />
             <img
-              className="w-20 h-20 absolute top-60 right-80 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
+              className="w-20 h-20 absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer hover:scale-115 transition-transform duration-300"
               src="/brain.png"
             />
           </div>

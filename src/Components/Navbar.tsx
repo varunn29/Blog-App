@@ -21,7 +21,7 @@ function Navbar()
 
                 <button onClick={function(){
                     setMenuOpen(prev => !prev);
-                }} className=' w-10 h-10 flex items-center justify-center text-white cursor-pointer translate-y-[5px] md:hidden'>{menuOpen ? <X/> : <Menu size={30}/>}</button>
+                }} className=' w-10 h-10 flex items-center justify-center text-white cursor-pointer translate-y-[4px] md:hidden'>{menuOpen ? <X/> : <Menu size={30}/>}</button>
 
                 <div className="hidden md:flex gap-5 text-xl text-white">
                     <NavLink to="/" className={function({isActive}){

@@ -2,8 +2,8 @@ import { Code2 } from "lucide-react";
 
 function About() {
   return (
-    <div className="text-white px-6 md:px-10 py-12 md:py-20">
-      <div className="max-w-7xl mx-auto">
+    <div className="text-white">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-10">
         {/* Heading */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-zinc-800 px-4 py-2 rounded-full mb-6">

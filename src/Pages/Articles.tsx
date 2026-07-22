@@ -56,7 +56,7 @@ function Articles()
     }
 
     return (
-        <div className="max-w-7xl mx-auto text-white px-5 md:px-8 py-8 md:py-10">
+        <div className="max-w-[1440px] mx-auto text-white px-5 md:px-8 py-8 md:py-10">
             <div className="mb-12 md:mb-20">
                 <div className="text-4xl md:text-6xl font-extrabold mb-4 md:mb-6 text-center">Articles</div>
                 <div className="text-zinc-400 text-base md:text-xl max-w-2xl mx-auto leading-7 text-center">Discover the latest programming articles from the DEV Community API.</div>
