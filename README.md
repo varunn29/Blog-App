@@ -1,25 +1,33 @@
 # DevScope
 
-> Learn from others. Share with others.
+> Learn from the developer community. Share your own journey.
 
 ![DevScope Hero](./Screenshots/hero.png)
 
+🌐 **Live Demo:** https://devscope-bay.vercel.app/  
+📂 **Source Code:** https://github.com/varunn29/Blog-App
+
 ## About
 
-DevScope is a modern blogging application. The content on DevScope is divided into two parts: articles fetched from the Dev.to API and blogs created by users. User-created posts are stored locally in the browser, allowing them to remain available even after the application is reopened and they can be edited or deleted at any time. DevScope is a platform where you don't just read and learn—you also share your knowledge with others.
+DevScope is a modern blogging platform built with React, TypeScript, Tailwind CSS, and Vite.
+
+It combines articles fetched from the DEV Community API with a personal blogging experience. Users can browse developer articles, read full posts, and create their own blogs that are stored locally in the browser. Local posts can be edited or deleted at any time, making DevScope a place to both learn from the community and document your own development journey.
 
 ## Features
 
-- Browse articles fetched from the Dev.to API
-- Read full articles
+- Browse articles fetched from the DEV Community API
+- Read complete articles
 - Create your own blog posts
 - View all your posts in one place
-- Edit your blog posts
-- Delete your blog posts
-- Your posts remain available for future visits
-- Browse articles using pagination
+- Edit existing posts
+- Delete posts
+- Persistent local storage for user-created posts
+- Browse articles with pagination
+- Responsive design for desktop and mobile devices
 
 ## Installation
+
+Follow these steps to run DevScope locally:
 
 ```bash
 git clone https://github.com/varunn29/Blog-App.git
@@ -34,12 +42,49 @@ npm run dev
 <img src="https://skillicons.dev/icons?i=react,ts,tailwind,vite" />
 </p>
 
-**API**
-- Dev.to API
+| Technology | Purpose |
+|------------|---------|
+| React | UI development |
+| TypeScript | Type safety |
+| Tailwind CSS | Styling |
+| Vite | Build tool |
+| DEV Community API | Fetching developer articles |
+| Local Storage | Persisting user-created blog posts |
 
 ## What I Learned
 
-- Learned the importance of building reusable components to avoid repeating the same code.
-- Learned how the Context API helps manage state across multiple components in a large application.
-- Learned the importance of fixing TypeScript errors early instead of letting them accumulate throughout the project.
-- Learned how to organize and manage a larger codebase by breaking the application into smaller, maintainable parts.
+Building DevScope helped me strengthen several core frontend engineering concepts:
+
+- Designing reusable React components to reduce duplication and improve maintainability.
+- Managing shared application state using the React Context API.
+- Using TypeScript to catch errors early and improve code reliability.
+- Organizing a growing React application into reusable components, pages, and context providers.
+- Working with external APIs and handling asynchronous data fetching.
+- Building responsive layouts with Tailwind CSS for desktop and mobile devices.
+
+## Screenshots
+
+### Articles
+
+![Articles](./Screenshots/articles.png)
+
+### Article Details
+
+![Article Details](./Screenshots/article-details.png)
+
+### My Posts
+
+![My Posts](./Screenshots/my-posts.png)
+
+### Create Post
+
+![Create Post](./Screenshots/create-post.png)
+
+## Future Improvements
+
+- User authentication and personal accounts.
+- Build a full-stack version with a backend and database instead of Local Storage.
+- Bookmark and save articles for later reading.
+- Like and comment system for community interaction.
+- User profiles with published posts.
+- Rich text/Markdown editor for writing articles.
